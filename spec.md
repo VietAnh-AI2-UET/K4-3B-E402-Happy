@@ -43,19 +43,27 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
 - [Sản phẩm 2]: ...
 
 ## §4. Thiết kế
-- Lát cắt MỘT CÂU (1 user · 1 việc · 1 quyết định AI · 1 kết quả):
-- Non-goals (≥3 thứ KHÔNG build):
-- Mức prototype nhắm tới: [ ] Sketch [ ] Mock [ ] Working — phần nào mock, phần nào thật:
-- Automation: [ ] augment [ ] conditional [ ] automate — lý do theo cost-of-error:
+- Lát cắt MỘT CÂU (1 user · 1 việc · 1 quyết định AI · 1 kết quả): Developer nhập kịch bản trình bày kỹ thuật · yêu cầu hệ thống rà soát cách diễn đạt · AI đánh dấu các cụm từ pha tiếng Anh/lạm dụng thuật ngữ và gợi ý cách nói tự nhiên hơn · người dùng duyệt từng gợi ý (áp dụng, tự sửa hoặc giữ nguyên) và nhận bản kịch bản hoàn chỉnh.
+- Non-goals (≥3 thứ KHÔNG build): (1) Không sửa lỗi chính tả hay ngữ pháp thông thường; (2) Không tự động viết lại toàn bộ kịch bản mà không có sự kiểm duyệt; (3) Không kiểm chứng tính đúng đắn kỹ thuật của nội dung (chỉ tối ưu cách diễn đạt).
+- Mức prototype nhắm tới: [ ] Sketch [ ] Mock [x] Working — phần nào mock, phần nào thật: UI chạy thật (Streamlit, luồng duyệt từng gợi ý, lưu trữ trạng thái, tải file), phần logic AI (phát hiện lỗi và gợi ý) đang mock bằng dữ liệu tĩnh và regex.
+- Automation: [x] augment [ ] conditional [ ] automate — lý do theo cost-of-error: Lời trình bày mang tính cá nhân và chuyên môn cao. Nếu AI tự ý sửa (Automate), rủi ro sai lệch ý nghĩa kỹ thuật rất lớn (cost-of-error đắt). Việc duyệt từng gợi ý (Augment) đảm bảo an toàn, người dùng làm chủ và tự chịu trách nhiệm với quyết định của mình.
 - §4b. Nguyên tắc đã áp dụng (≥4 — HAX/PAIR, xem guide):
   | Nguyên tắc | Áp cụ thể vào đâu trong prototype |
   |---|---|
+  | **G10. Thu hẹp phạm vi khi nghi ngờ** (Bắt buộc) | Khi gặp từ lạ/khó đoán (uncertain), UI hiện cảnh báo màu cam "Chưa có đề xuất an toàn" và không tự điền gợi ý, yêu cầu người dùng tự điền và xác nhận. |
+  | **G8. Gạt bỏ dễ dàng** | Cung cấp nút "Giữ nguyên" to và rõ ràng ở mỗi phát hiện để người dùng nhanh chóng bỏ qua gợi ý của AI. Có tính năng "Hoàn tác quyết định". |
+  | **G9. Sửa dễ dàng** | Người dùng có ô "Cách nói thay thế" để tự gõ lại câu theo ý mình thay vì bắt buộc dùng gợi ý cứng của AI. |
+  | **G11. Giải thích vì sao** | Bên dưới mỗi đoạn văn bản được highlight, hệ thống hiển thị lý do tại sao đoạn đó bị đánh dấu (vd: lạm dụng thuật ngữ, pha tiếng Anh...). |
 
 ## §5. Kiểu lỗi — 4 lớp chỗ khó + kịch bản (≥8) [bảng theo guide §2.5]
 
 ## §6. Bốn đường đi của trải nghiệm
-- Happy path: · Low-confidence (②): · Failure/không căn cứ (①): · Correction (user sửa):
-- Khi bị đòi ngoài phạm vi (③): · Case đặc thù domain (④):
+- Happy path: Người dùng dán kịch bản nằm trong bộ hỗ trợ -> Hệ thống phân tích, highlight các lỗi -> Người dùng tuần tự duyệt và bấm "Áp dụng gợi ý" / "Giữ nguyên" -> Xem bản hoàn chỉnh và tải file TXT.
+- Low-confidence (②): Hệ thống phát hiện cụm từ nhưng không chắc chắn cách diễn đạt thay thế. Giao diện hiển thị cảnh báo "Chưa có đề xuất an toàn", để trống phần gợi ý và nhường quyền tự quyết định cho người dùng.
+- Failure/không căn cứ (①): Kịch bản không có lỗi diễn đạt hoặc nằm ngoài bộ mô phỏng. Hệ thống thông báo "Không tìm thấy cụm nào trong bộ mô phỏng" và hiển thị nguyên vẹn kịch bản gốc, không đánh dấu dòng nào.
+- Correction (user sửa): Khi AI đưa ra gợi ý, người dùng không đồng ý và tự nhập lại cách diễn đạt của mình vào ô "Cách nói thay thế", sau đó bấm nút "Áp dụng bản tự sửa".
+- Khi bị đòi ngoài phạm vi (③): Người dùng nhập kịch bản vượt quá giới hạn (12000 ký tự) sẽ bị UI chặn. Hoặc nhập văn bản lạ (không có trong bộ test CP2), hệ thống cảnh báo đỏ "Đây là nội dung ngoài mẫu demo... không phải kết quả kiểm định AI".
+- Case đặc thù domain (④): Kịch bản có chứa các block code, log JSON, API request. AI cần nhận diện và bỏ qua các đoạn này, chỉ rà soát văn bản tự nhiên.
 
 ## §7. Kiểm thử
 - Chiều chất lượng + định nghĩa kiểm chứng được:
