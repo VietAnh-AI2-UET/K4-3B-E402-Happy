@@ -1,10 +1,9 @@
-
 | # | Dòng | Nội dung |
 |---|---|---|
-| 1 | Track + đề | C · Vietnamese Spoken-Script QA — Agent review kịch bản|
-| 2 | Job executor (ai · đang ở đâu · làm gì) |Biên tập viên/giảng viên duyệt kịch bản, đang review một kịch bản video giáo dục tiếng Việt và cần tìm nhanh những câu/đoạn có vấn đề về sắc thái, cấu trúc câu, độ dài khi đọc thành lời, số/acronym hoặc cách phát âm. |
-| 3 | Pain một câu (ai – đang làm gì – vướng đâu – hậu quả) |Khi duyệt kịch bản, biên tập viên phải tự phát hiện những câu tuy đúng ngữ pháp nhưng sượng khi đọc, lặp ý hoặc khó phát âm; nếu chỉ gắn nhãn chung như “AI slop” thì không biết chính xác cần sửa gì, dễ tạo false positive với văn bản do con người viết và mất thời gian review. |
-| 4 | 1–2 bằng chứng đầu (số + cách đếm + mã hội thoại/tin nhắn, hoặc khảo sát/phỏng vấn có số người) | |
-| 5 | Lát cắt MỘT CÂU (1 user · 1 việc · 1 quyết định AI · 1 kết quả) |Một biên tập viên · đang duyệt một kịch bản khoảng 40 câu · AI quyết định đoạn nào có vấn đề và cần human review · kết quả là exact span + category/severity + lý do + suggestion sửa tối thiểu, để biên tập viên accept/reject từng finding. |
-| 6 | AI tự làm đến đâu + 1 dòng lý do · ≥3 willing users ngoài nhóm | |
-| 7 | Phân công có tên | |
+| 1 | Track + đề | Track C2 — Vietnamese Spoken-Script QA: rà soát lời trình bày kỹ thuật của Dev/BA/PM |
+| 2 | Job executor | Dev hoặc BA đang chuẩn bị lời trình bày cho demo sản phẩm, technical sharing hoặc video hướng dẫn dành cho người ít chuyên môn hơn. |
+| 3 | Pain | Khi chuyển tài liệu kỹ thuật thành lời trình bày, người viết gặp câu nghe không tự nhiên hoặc pha tiếng Anh không cần thiết; họ phải review nhiều vòng, khiến buổi trình bày kéo dài và vẫn có nguy cơ làm người nghe hiểu sai. |
+| 4 | Bằng chứng đầu | Khảo sát 10 người gồm 7 Developer và 3 BA: 10/10 phải sửa ít nhất một vòng; 6/10 sửa hai vòng; 5/10 gặp câu viết hiểu nhưng nói không tự nhiên; 5/10 gặp pha Anh–Việt không cần thiết; 5/10 cho biết buổi trình bày bị kéo dài; 2/10 từng khiến người nghe hiểu sai. |
+| 5 | Lát cắt một câu | Một Dev/BA đang duyệt một đoạn lời trình bày kỹ thuật; AI quyết định chính xác span nào “khó nói tự nhiên” hoặc “pha Anh–Việt không cần thiết”, giải thích lý do và đề xuất sửa tối thiểu; người viết accept/reject từng gợi ý để tạo phiên bản dễ trình bày hơn mà không đổi nghĩa kỹ thuật. |
+| 6 | Automation + willing users | Mức **Augment**: AI chỉ đánh dấu và đề xuất; người viết quyết định mọi thay đổi. AI không được tự thêm claim, thay đổi thuật ngữ bắt buộc hoặc xuất bản nội dung. Khảo sát có 8/10 người sẵn sàng thử, nhưng cần xác nhận tên và lịch của ít nhất 2 người. |
+| 7 | Phân công | `Võ Công Danh` — dựng canvas · `Bùi Việt Anh` — đội trưởng · `Đinh Đức Long` — prompt/backend · `Hà Anh Tuấn` — UI accept/reject, validation và demo. |
