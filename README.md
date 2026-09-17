@@ -8,10 +8,10 @@
 
 | Họ và Tên | Mã Học Viên | Vai trò chính | Phần việc đảm nhiệm trong dự án |
 |---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+| Bùi Việt Anh | 2A202602611 | Nhóm trưởng | Định hướng chọn track, slice |
+| Đinh Đức Long | 2A202602633 |  | Survey kiếm users |
+| Võ Công Danh | 2A202602739 |  | Tạo form survey |
+| Hà Anh Tuấn | 2A202602376 |  | Tạo Canvas |
 
 > Nhóm copy nguyên file README này về repo của mình, rồi điền bảng trên. Cột **Phần việc đảm nhiệm** ghi càng cụ thể càng tốt.
 
