@@ -1,0 +1,520 @@
+2026-09-18 01:10:53,619 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:10:53,619 - INFO - User Input:
+Theo giảng viên, 70% sự thành công của việc ứng dụng AI trong doanh nghiệp đến từ đâu?
+2026-09-18 01:10:57,262 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668654-a22GtFg0g53HGrOlkCYm",
+  "object": "chat.completion",
+  "created": 1789668654,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\": []}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 496,
+    "completion_tokens": 6,
+    "total_tokens": 502,
+    "cost": 7.8e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.8e-05,
+      "upstream_inference_prompt_cost": 7.44e-05,
+      "upstream_inference_completions_cost": 3.6e-06
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:10:57,263 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:10:57,264 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:10:57,264 - INFO - User Input:
+Product Manager và Project Manager khác nhau như thế nào theo bài giảng?
+2026-09-18 01:11:00,755 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668657-d9k7SNb6kSglFnDEe10l",
+  "object": "chat.completion",
+  "created": 1789668657,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"theo bài giảng\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Cụm từ này sử dụng tiếng Anh không cần thiết, có thể thay thế bằng từ tiếng Việt dễ hiểu hơn.\",\n      \"suggestion\": \"theo nội dung bài giảng\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 488,
+    "completion_tokens": 88,
+    "total_tokens": 576,
+    "cost": 0.000126,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.000126,
+      "upstream_inference_prompt_cost": 7.32e-05,
+      "upstream_inference_completions_cost": 5.28e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:00,755 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:00,757 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:00,757 - INFO - User Input:
+Giảng viên khuyên nên đọc những cuốn sách hay tài liệu nào để hiểu thêm về sản phẩm AI?
+2026-09-18 01:11:03,093 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668661-H6GESa7f1OQFMFy4OHzn",
+  "object": "chat.completion",
+  "created": 1789668661,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\": []}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 496,
+    "completion_tokens": 6,
+    "total_tokens": 502,
+    "cost": 7.8e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.8e-05,
+      "upstream_inference_prompt_cost": 7.44e-05,
+      "upstream_inference_completions_cost": 3.6e-06
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:03,094 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:03,095 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:03,095 - INFO - User Input:
+Công cụ nào tốt nhất để dùng thay thế cho ChatGPT?
+2026-09-18 01:11:05,422 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668663-y77ehXMbM13lzwRqaa21",
+  "object": "chat.completion",
+  "created": 1789668663,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\": []}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 487,
+    "completion_tokens": 6,
+    "total_tokens": 493,
+    "cost": 7.665e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.665e-05,
+      "upstream_inference_prompt_cost": 7.305e-05,
+      "upstream_inference_completions_cost": 3.6e-06
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:05,423 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:05,425 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:05,425 - INFO - User Input:
+Anh ấy có nhắc đến một cuốn sách về não bộ, đó là cuốn gì và tại sao lại nhắc đến?
+2026-09-18 01:11:07,933 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668666-qvuYycwlYMCHmEANfIKe",
+  "object": "chat.completion",
+  "created": 1789668666,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\": []}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 500,
+    "completion_tokens": 6,
+    "total_tokens": 506,
+    "cost": 7.86e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.86e-05,
+      "upstream_inference_prompt_cost": 7.5e-05,
+      "upstream_inference_completions_cost": 3.6e-06
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:07,933 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:07,934 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:07,935 - INFO - User Input:
+Bài toán 1000 sinh viên cần giải quyết như thế nào?
+2026-09-18 01:11:10,410 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668668-74BgJYtmPFYkzZAWwcaf",
+  "object": "chat.completion",
+  "created": 1789668668,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\": []}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 488,
+    "completion_tokens": 6,
+    "total_tokens": 494,
+    "cost": 7.68e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.68e-05,
+      "upstream_inference_prompt_cost": 7.32e-05,
+      "upstream_inference_completions_cost": 3.6e-06
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:10,410 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:10,412 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:10,412 - INFO - User Input:
+Tôi có nên đuổi việc nhân sự cũ để tuyển AI engineer như các công ty khác năm 2024 không?
+2026-09-18 01:11:13,739 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668670-xhB0iVAepa0qNsfSX4Rb",
+  "object": "chat.completion",
+  "created": 1789668670,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"tuyển AI engineer\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'AI engineer' thay vì 'kỹ sư AI' có thể gây khó hiểu cho người nghe không quen thuộc với tiếng Anh.\",\n      \"suggestion\": \"Thay 'AI engineer' bằng 'kỹ sư AI'.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 500,
+    "completion_tokens": 102,
+    "total_tokens": 602,
+    "cost": 0.0001362,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0001362,
+      "upstream_inference_prompt_cost": 7.5e-05,
+      "upstream_inference_completions_cost": 6.12e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:13,739 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:13,740 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:13,741 - INFO - User Input:
+Khóa học này thu học phí bao nhiêu một người? Lớp đông 1000 người thì BTC thu được bao nhiêu tiền?
+2026-09-18 01:11:17,575 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668674-7pN1E5ercBHKmC6ygAco",
+  "object": "chat.completion",
+  "created": 1789668674,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\"findings\": []}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 503,
+    "completion_tokens": 6,
+    "total_tokens": 509,
+    "cost": 7.905e-05,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 7.905e-05,
+      "upstream_inference_prompt_cost": 7.545e-05,
+      "upstream_inference_completions_cost": 3.6e-06
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:17,575 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:17,577 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:17,577 - INFO - User Input:
+Tại sao lại nói 'chi phí chuyển đổi' của người dùng đối với các sản phẩm AI đang ngày càng rẻ?
+2026-09-18 01:11:19,764 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668677-ft76M0rwkCg12k1ud2FY",
+  "object": "chat.completion",
+  "created": 1789668677,
+  "model": "openai/gpt-4o-mini",
+  "provider": "OpenAI",
+  "system_fingerprint": "fp_1783d8c66a",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"chi phí chuyển đổi\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Cụm từ này có thể gây khó hiểu cho người nghe vì không phải ai cũng quen thuộc với thuật ngữ 'chi phí chuyển đổi' trong ngữ cảnh công nghệ.\",\n      \"suggestion\": \"Sử dụng 'chi phí thay đổi' hoặc 'chi phí chuyển sang' để dễ hiểu hơn.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 499,
+    "completion_tokens": 112,
+    "total_tokens": 611,
+    "cost": 0.00014205,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00014205,
+      "upstream_inference_prompt_cost": 7.485e-05,
+      "upstream_inference_completions_cost": 6.72e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:19,764 - INFO - --- KẾT THÚC GỌI AI ---
+
+2026-09-18 01:11:19,766 - INFO - --- BẮT ĐẦU GỌI AI (SCRIPT QA) ---
+2026-09-18 01:11:19,768 - INFO - User Input:
+Thế nào là 'dogfood' trong phát triển sản phẩm, đoạn cuối giảng viên định nhắc đến ý gì?
+2026-09-18 01:11:22,225 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789668680-88QX54cibqasjUmNckt5",
+  "object": "chat.completion",
+  "created": 1789668680,
+  "model": "openai/gpt-4o-mini",
+  "provider": "OpenAI",
+  "system_fingerprint": "fp_1783d8c66a",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"'dogfood'\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ tiếng Anh 'dogfood' mà không có giải thích có thể gây khó hiểu cho người nghe không quen thuộc với thuật ngữ này.\",\n      \"suggestion\": \"Giải thích hoặc sử dụng từ tiếng Việt tương đương.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 499,
+    "completion_tokens": 97,
+    "total_tokens": 596,
+    "cost": 0.00013305,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00013305,
+      "upstream_inference_prompt_cost": 7.485e-05,
+      "upstream_inference_completions_cost": 5.82e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 01:11:22,225 - INFO - --- KẾT THÚC GỌI AI ---
+
