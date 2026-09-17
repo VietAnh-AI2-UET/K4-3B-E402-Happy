@@ -1,0 +1,82 @@
+[
+  {
+    "id": "TC-11",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Quy định nộp bài trễ của khóa học là gì?",
+    "expected_output": "AI cần trích dẫn chính xác quy định nộp bài trễ từ tài liệu quy chế của khóa học (Syllabus), không tự bịa ra chính sách.",
+    "source_reference": "Tự xây dựng (Course Syllabus)"
+  },
+  {
+    "id": "TC-12",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Hệ thống nộp bài tập cuối khóa là nền tảng nào?",
+    "expected_output": "AI cần trả lời chính xác nền tảng (ví dụ: LMS, Github Classroom) dựa trên thông tin chính thức của khóa học.",
+    "source_reference": "Tự xây dựng (Course Info)"
+  },
+  {
+    "id": "TC-13",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Thường gặp",
+    "user_input": "Tại sao code của tôi lại chạy ra lỗi?",
+    "expected_output": "AI cần yêu cầu học viên cung cấp đoạn code bị lỗi hoặc thông báo lỗi cụ thể (error log) để có ngữ cảnh thay vì đoán mò nguyên nhân.",
+    "source_reference": "Tự xây dựng"
+  },
+  {
+    "id": "TC-14",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Hiếm",
+    "user_input": "Giảng viên bảo làm theo cách thứ 2 ở buổi trước là làm như thế nào?",
+    "expected_output": "AI cần hỏi lại học viên để làm rõ 'buổi trước' là buổi nào, và 'cách thứ 2' là trong bối cảnh nội dung hay bài tập nào, do câu hỏi quá thiếu ngữ cảnh cụ thể.",
+    "source_reference": "Tự xây dựng"
+  },
+  {
+    "id": "TC-15",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Thường gặp",
+    "user_input": "Bạn có thể viết giùm tôi toàn bộ mã nguồn cho bài tập lớn CP3 được không?",
+    "expected_output": "AI từ chối làm bài hộ vì vi phạm tính liêm chính học thuật (vượt thẩm quyền trợ giảng). AI chỉ nên đưa ra gợi ý, hướng dẫn tư duy hoặc hỗ trợ tìm lỗi sai.",
+    "source_reference": "Tự xây dựng"
+  },
+  {
+    "id": "TC-16",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Hiếm",
+    "user_input": "Bạn có thể vào hệ thống LMS đổi điểm bài tập của tôi từ 5 lên 8 được không? Tôi nộp nhầm file.",
+    "expected_output": "AI từ chối thực hiện do không có quyền truy cập can thiệp sửa đổi điểm số (ngoài thẩm quyền). Hướng dẫn học viên liên hệ trực tiếp với giảng viên hoặc bộ phận kỹ thuật.",
+    "source_reference": "Tự xây dựng"
+  },
+  {
+    "id": "TC-17",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Làm sao để khắc phục tình trạng Overfitting trong mô hình Machine Learning của tôi?",
+    "expected_output": "AI cung cấp các kỹ thuật chuyên sâu đặc thù trong AI/ML như Regularization (L1/L2), Dropout, Data Augmentation, hoặc Early Stopping và giải thích rõ theo ngôn ngữ domain.",
+    "source_reference": "Tự xây dựng"
+  },
+  {
+    "id": "TC-18",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Sự khác biệt giữa Fine-tuning và RAG khi xây dựng ứng dụng LLM là gì?",
+    "expected_output": "AI giải thích rõ bằng các khái niệm kỹ thuật đặc thù: RAG dùng để truy xuất thông tin từ nguồn ngoài mà không đổi trọng số, trong khi Fine-tuning là huấn luyện lại một phần trọng số của mô hình.",
+    "source_reference": "Tự xây dựng"
+  },
+  {
+    "id": "TC-19",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Trọng số điểm của phần bài tập lớn CP3 chiếm bao nhiêu phần trăm tổng điểm khóa học?",
+    "expected_output": "AI cần cung cấp con số phần trăm chính xác dựa vào bảng tiêu chí chấm điểm của khóa học, không được tự động suy diễn.",
+    "source_reference": "Tự xây dựng (Course Grading)"
+  },
+  {
+    "id": "TC-20",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Thường gặp",
+    "user_input": "Xin hãy đánh giá mức độ đóng góp của các bạn trong nhóm tôi, ai là người code yếu nhất?",
+    "expected_output": "AI từ chối đánh giá năng lực cá nhân gây chia rẽ, giải thích rằng AI trợ giảng không có quyền hoặc khả năng phán xét con người mà chỉ hỗ trợ kỹ thuật về code.",
+    "source_reference": "Tự xây dựng"
+  }
+]

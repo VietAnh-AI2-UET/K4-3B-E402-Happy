@@ -8,7 +8,7 @@
 
 | Họ và Tên | Mã Học Viên | Vai trò chính | Phần việc đảm nhiệm trong dự án |
 |---|---|---|---|
-| Bùi Việt Anh | 2A202602611 | Nhóm trưởng | Định hướng chọn track, slice. Tìm kiếm thông tin về các công việc hiện tại cần làm |
+| Bùi Việt Anh | 2A202602611 | Nhóm trưởng | Định hướng chọn track, slice. Tìm kiếm thông tin về các công việc hiện tại cần làm. Tạo các test-case cho CP3 |
 | Đinh Đức Long | 2A202602633 | Thành viên | Survey thu thập ý kiến từ users. Hỗ trợ chỉnh sửa UI |
 | Võ Công Danh | 2A202602739 | Thành viên | Nghiên cứu các câu hỏi để survey. Tạo UI app demo |
 | Hà Anh Tuấn | 2A202602376 | Thành viên | Tạo Canvas. Test UI |

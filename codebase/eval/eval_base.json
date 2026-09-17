@@ -1,0 +1,82 @@
+[
+  {
+    "id": "TC-01",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Theo giảng viên, 70% sự thành công của việc ứng dụng AI trong doanh nghiệp đến từ đâu?",
+    "expected_output": "AI cần trả lời rằng 70% thành công khi đưa AI vào ứng dụng trong doanh nghiệp đến từ con người và vận hành chứ không phải đến từ công nghệ.",
+    "source_reference": "[T01-003]"
+  },
+  {
+    "id": "TC-02",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Product Manager và Project Manager khác nhau như thế nào theo bài giảng?",
+    "expected_output": "Project Manager tập trung vào đảm bảo dự án hoàn thành đúng tiến độ và ngân sách. Product Manager tập trung vào người dùng, tự đi tìm bài toán, giải pháp và thị trường cho sản phẩm.",
+    "source_reference": "[T01-010], [T01-011]"
+  },
+  {
+    "id": "TC-03",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Giảng viên khuyên nên đọc những cuốn sách hay tài liệu nào để hiểu thêm về sản phẩm AI?",
+    "expected_output": "AI cần liệt kê: 'AI Engineering', 'The Design of Everyday Things', 'Thinking, Fast and Slow', và tài liệu 'People + AI Guidebook' của Google.",
+    "source_reference": "[T01-016], [T01-026], [T01-028], [T01-029]"
+  },
+  {
+    "id": "TC-04",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Thường gặp",
+    "user_input": "Công cụ nào tốt nhất để dùng thay thế cho ChatGPT?",
+    "expected_output": "AI cần làm rõ bối cảnh sử dụng (code hay viết lách, v.v.), hoặc giải thích rằng không có công cụ tuyệt đối tốt nhất, trích dẫn bài giảng nói về việc người dùng dễ dàng chuyển đổi qua lại giữa Cursor, Claude, Antigravity tùy nhu cầu.",
+    "source_reference": "[T01-022], [T01-024]"
+  },
+  {
+    "id": "TC-05",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Hiếm",
+    "user_input": "Anh ấy có nhắc đến một cuốn sách về não bộ, đó là cuốn gì và tại sao lại nhắc đến?",
+    "expected_output": "AI cần nhận diện 'anh ấy' là giảng viên và 'cuốn sách về não bộ' là 'Thinking, Fast and Slow'. Lý do nhắc đến là để giải thích về tư duy hệ thống 1 (nhanh) và 2 (chậm) nhằm khuyến khích học viên rèn luyện mindset mới.",
+    "source_reference": "[T01-016]"
+  },
+  {
+    "id": "TC-06",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Thường gặp",
+    "user_input": "Bài toán 1000 sinh viên cần giải quyết như thế nào?",
+    "expected_output": "AI cần yêu cầu người dùng làm rõ bối cảnh hoặc hướng dẫn người dùng lùi lại một bước để xác định xem học viên đang gặp khó khăn ở đâu, thay vì vội vàng đưa ra giải pháp ngay (theo cách giảng viên hướng dẫn trong bài).",
+    "source_reference": "[T01-039]"
+  },
+  {
+    "id": "TC-07",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Thường gặp",
+    "user_input": "Tôi có nên đuổi việc nhân sự cũ để tuyển AI engineer như các công ty khác năm 2024 không?",
+    "expected_output": "AI từ chối đưa ra lời khuyên nhân sự trực tiếp, nhưng có thể trích dẫn lời giảng viên rằng nhiều công ty tuyển AI engineer mà không có bài toán cụ thể sẽ dẫn đến mất niềm tin và thất bại.",
+    "source_reference": "[T01-002]"
+  },
+  {
+    "id": "TC-08",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Hiếm",
+    "user_input": "Khóa học này thu học phí bao nhiêu một người? Lớp đông 1000 người thì BTC thu được bao nhiêu tiền?",
+    "expected_output": "AI từ chối trả lời do thông tin về học phí và doanh thu không có trong transcript và nằm ngoài phạm vi bài giảng. AI chỉ có thể nhắc đến bài tập tình huống lớp 1000 người.",
+    "source_reference": "Ngoài dữ liệu"
+  },
+  {
+    "id": "TC-09",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Tại sao lại nói 'chi phí chuyển đổi' của người dùng đối với các sản phẩm AI đang ngày càng rẻ?",
+    "expected_output": "Trong domain phát triển sản phẩm, chi phí chuyển đổi (switching cost) rẻ vì người dùng hiện tại dễ dàng xuất dữ liệu (export) mang sang ứng dụng khác và không phải học cách sử dụng trải nghiệm mới, khác với các sản phẩm truyền thống.",
+    "source_reference": "[T01-021]"
+  },
+  {
+    "id": "TC-10",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Thế nào là 'dogfood' trong phát triển sản phẩm, đoạn cuối giảng viên định nhắc đến ý gì?",
+    "expected_output": "Mặc dù transcript bị cắt, AI với kiến thức domain cần giải thích thuật ngữ 'dogfooding' (eat your own dog food) tức là dùng chính sản phẩm mình tạo ra, kết nối với bối cảnh trước đó giảng viên khuyên nên tự build công cụ cho bản thân dùng trước.",
+    "source_reference": "[T01-042]"
+  }
+]
