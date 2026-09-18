@@ -1,12 +1,25 @@
 import os
 import json
 import time
+import re
 import requests
 import logging
 from dotenv import load_dotenv
+from core import Finding
 
 # Import prompt từ file riêng
 from .prompts import REVIEW_SYSTEM_PROMPT
+
+ENGLISH_WORDS = {
+    "a", "an", "and", "any", "are", "architecture", "be", "because", "but", "can", "control",
+    "demo", "do", "everyone", "experience", "feature", "for", "from", "give", "happy", "i'm",
+    "implementation", "is", "it", "keeping", "main", "much", "notification", "of", "on", "or",
+    "our", "overall", "pretty", "questions", "simple", "so", "take", "thank", "that", "that's",
+    "the", "their", "this", "to", "users", "we", "while", "with", "you", "your"
+}
+ENGLISH_TOKEN = re.compile(r"[A-Za-z]+(?:'[A-Za-z]+)?")
+VIETNAMESE_DIACRITICS = re.compile(r"[àáảãạăằắẳẵặâầấẩẫậđèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵ]", re.IGNORECASE)
+SENTENCE_PATTERN = re.compile(r"[^.!?]+(?:[.!?]+|$)")
 
 # Đường dẫn mặc định tới file log trong codebase/run/
 DEFAULT_RUN_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "run"))
@@ -39,6 +52,41 @@ def get_api_key(custom_key: str = None) -> str:
     if custom_key and custom_key.strip():
         return custom_key.strip()
     return os.getenv("OPENROUTER_API_KEY", "")
+
+def is_english_dominant_sentence(sentence: str) -> bool:
+    """Detect clearly English sentences that should never disappear from review."""
+    if VIETNAMESE_DIACRITICS.search(sentence):
+        return False
+    tokens = [token.lower() for token in ENGLISH_TOKEN.findall(sentence)]
+    if len(tokens) < 4:
+        return False
+    known_words = sum(token in ENGLISH_WORDS for token in tokens)
+    return known_words >= 2 and known_words / len(tokens) >= 0.4
+
+def add_uncovered_english_sentences(source: str, findings):
+    """Add a safe human-review fallback when the model omits an English sentence."""
+    fallback_findings = []
+    for match in SENTENCE_PATTERN.finditer(source):
+        raw_sentence = match.group()
+        sentence = raw_sentence.strip()
+        if not sentence or not is_english_dominant_sentence(sentence):
+            continue
+        start = match.start() + len(raw_sentence) - len(raw_sentence.lstrip())
+        end = start + len(sentence)
+        overlaps_existing = any(start < finding.end and end > finding.start for finding in findings)
+        if overlaps_existing:
+            continue
+        fallback_findings.append(Finding(
+            id=f"{start}_english_fallback",
+            start=start,
+            end=end,
+            original=sentence,
+            suggestion="",
+            category="Pha tiếng Anh",
+            reason="AI chưa tạo bản thay thế cho câu tiếng Anh này. Hãy tự nhập bản tiếng Việt hoặc chọn Giữ nguyên.",
+            uncertain=True,
+        ))
+    return sorted([*findings, *fallback_findings], key=lambda item: item.start)
 
 def review_script(script_text: str, api_key: str = None) -> dict:
     """
@@ -111,8 +159,6 @@ def analyze_script_ai(source: str, api_key: str = None):
     """
     Module phân tích kịch bản bằng AI thật, chuyển đổi sang Finding dataclass cho UI Streamlit.
     """
-    from core import Finding
-
     if not source.strip():
         raise ValueError("Hãy nhập kịch bản trước khi rà soát.")
     if len(source) > 12000:
@@ -161,6 +207,6 @@ def analyze_script_ai(source: str, api_key: str = None):
         )
         findings.append(finding)
 
-    # Sắp xếp theo thứ tự xuất hiện trong văn bản
-    findings.sort(key=lambda item: item.start)
+    # Không để một câu tiếng Anh bị AI bỏ sót biến mất khỏi hàng chờ duyệt.
+    findings = add_uncovered_english_sentences(source, findings)
     return findings, True

@@ -8,6 +8,7 @@ Môi trường kiểm tra: Windows, Python 3.12.14, Streamlit 1.64.0.
 - **3 kiểm thử Streamlit AppTest, đạt 3/3:** happy path có tự sửa/giữ nguyên/hoàn tác/xuất; thuật ngữ chưa chắc với nguồn không mặc định; đầu vào trống và ngoài mẫu.
 - Trình duyệt thật: nhập mẫu → giữ nguyên một cụm → áp dụng một cụm → tự biên tập một cụm → duyệt đủ → xem bản cuối. Quan sát bản cuối có **3 cụm sửa, 1 cụm giữ nguyên**; API và JSON không đổi.
 - Kiểm tra trực quan ba bước ở chiều rộng desktop 1440px và mobile 390px. Đã chỉnh phần đầu trang, màu chữ nút chính và hiển thị highlight theo quyết định. Chiều cao ảnh được tăng để chụp trọn nội dung, không mô phỏng một model điện thoại cụ thể.
+- Kiểm tra tương tác 18/09/2026: nhấn trực tiếp highlight số 3 làm panel chọn đúng gợi ý số 3; Áp dụng gợi ý số 1 tự chuyển sang số 2; Giữ nguyên số 2 tự chuyển sang số 3. Bộ test logic + UI đạt 10/10.
 
 ## Chưa xác minh / không được suy ra
 
