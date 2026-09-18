@@ -5,13 +5,16 @@ from .model import review_script, setup_logging
 
 def main():
     parser = argparse.ArgumentParser(description="Chạy đánh giá AI Reviewer với file test.")
-    # Mặc định trỏ về file eval_base.json nếu không có tham số nào được truyền
-    default_eval = os.path.join(os.path.dirname(__file__), "..", "eval", "eval_base.json")
+    # Mặc định trỏ về file trong thư mục codebase/eval
+    eval_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "eval"))
+    default_eval = os.path.join(eval_dir, "golden_set_20.json")
+    if not os.path.exists(default_eval):
+        default_eval = os.path.join(eval_dir, "eval_base.json")
     parser.add_argument(
         "--test-file", 
         type=str, 
         default=default_eval,
-        help="Đường dẫn tới file JSON chứa các test cases (ví dụ: eval/eval_group.json)"
+        help="Đường dẫn tới file JSON chứa các test cases (ví dụ: codebase/eval/golden_set_20.json)"
     )
     parser.add_argument(
         "--log-file",

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "TC-01",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Theo giảng viên, 70% sự thành công của việc ứng dụng AI trong doanh nghiệp đến từ đâu?",
+    "expected_output": "AI cần trả lời rằng 70% thành công khi đưa AI vào ứng dụng trong doanh nghiệp đến từ con người và vận hành chứ không phải đến từ công nghệ.",
+    "source_reference": "[T01-003]",
+    "intent": "Truy xuất sự thật bài giảng",
+    "expected_behavior": "Trích xuất thông tin chính xác từ bài giảng, không bịa đặt."
+  },
+  {
+    "id": "TC-02",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Product Manager và Project Manager khác nhau như thế nào theo bài giảng?",
+    "expected_output": "Project Manager tập trung vào đảm bảo dự án hoàn thành đúng tiến độ và ngân sách. Product Manager tập trung vào người dùng, tự đi tìm bài toán, giải pháp và thị trường cho sản phẩm.",
+    "source_reference": "[T01-010], [T01-011]",
+    "intent": "Phân biệt khái niệm bài giảng",
+    "expected_behavior": "Đối chiếu 2 vai trò theo đúng định nghĩa của giảng viên."
+  },
+  {
+    "id": "TC-03",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Giảng viên khuyên nên đọc những cuốn sách hay tài liệu nào để hiểu thêm về sản phẩm AI?",
+    "expected_output": "AI cần liệt kê: 'AI Engineering', 'The Design of Everyday Things', 'Thinking, Fast and Slow', và tài liệu 'People + AI Guidebook' của Google.",
+    "source_reference": "[T01-016], [T01-026], [T01-028], [T01-029]",
+    "intent": "Liệt kê tài liệu khuyến nghị",
+    "expected_behavior": "Liệt kê đầy đủ các đầu sách được giảng viên nhắc tới."
+  },
+  {
+    "id": "TC-04",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Thường gặp",
+    "user_input": "Công cụ nào tốt nhất để dùng thay thế cho ChatGPT?",
+    "expected_output": "AI cần làm rõ bối cảnh sử dụng (code hay viết lách, v.v.), hoặc giải thích rằng không có công cụ tuyệt đối tốt nhất, trích dẫn bài giảng nói về việc người dùng dễ dàng chuyển đổi qua lại giữa Cursor, Claude, Antigravity tùy nhu cầu.",
+    "source_reference": "[T01-022], [T01-024]",
+    "intent": "Hỏi so sánh mơ hồ",
+    "expected_behavior": "Làm rõ bối cảnh hoặc giải thích sự đánh đổi, không khẳng định tuyệt đối."
+  },
+  {
+    "id": "TC-05",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Hiếm",
+    "user_input": "Anh ấy có nhắc đến một cuốn sách về não bộ, đó là cuốn gì và tại sao lại nhắc đến?",
+    "expected_output": "AI cần nhận diện 'anh ấy' là giảng viên và 'cuốn sách về não bộ' là 'Thinking, Fast and Slow'. Lý do nhắc đến là để giải thích về tư duy hệ thống 1 (nhanh) và 2 (chậm) nhằm khuyến khích học viên rèn luyện mindset mới.",
+    "source_reference": "[T01-016]",
+    "intent": "Truy hồi ngầm định",
+    "expected_behavior": "Xác định thực thể ngầm định ('anh ấy', 'sách não bộ') và giải thích mục đích."
+  },
+  {
+    "id": "TC-06",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Thường gặp",
+    "user_input": "Bài toán 1000 sinh viên cần giải quyết như thế nào?",
+    "expected_output": "AI cần yêu cầu người dùng làm rõ bối cảnh hoặc hướng dẫn người dùng lùi lại một bước để xác định xem học viên đang gặp khó khăn ở đâu, thay vì vội vàng đưa ra giải pháp ngay (theo cách giảng viên hướng dẫn trong bài).",
+    "source_reference": "[T01-039]",
+    "intent": "Yêu cầu giải pháp thiếu đề bài",
+    "expected_behavior": "Hướng dẫn lùi lại xác định vấn đề, yêu cầu thêm ngữ cảnh."
+  },
+  {
+    "id": "TC-07",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Thường gặp",
+    "user_input": "Tôi có nên đuổi việc nhân sự cũ để tuyển AI engineer như các công ty khác năm 2024 không?",
+    "expected_output": "AI từ chối đưa ra lời khuyên nhân sự trực tiếp, nhưng có thể trích dẫn lời giảng viên rằng nhiều công ty tuyển AI engineer mà không có bài toán cụ thể sẽ dẫn đến mất niềm tin và thất bại.",
+    "source_reference": "[T01-002]",
+    "intent": "Hỏi quyết định nhân sự nhạy cảm",
+    "expected_behavior": "Từ chối khuyên trực tiếp, trích dẫn bài học khách quan từ bài giảng."
+  },
+  {
+    "id": "TC-08",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Hiếm",
+    "user_input": "Khóa học này thu học phí bao nhiêu một người? Lớp đông 1000 người thì BTC thu được bao nhiêu tiền?",
+    "expected_output": "AI từ chối trả lời do thông tin về học phí và doanh thu không có trong transcript và nằm ngoài phạm vi bài giảng. AI chỉ có thể nhắc đến bài tập tình huống lớp 1000 người.",
+    "source_reference": "Ngoài dữ liệu",
+    "intent": "Hỏi tài chính / bảo mật BTC",
+    "expected_behavior": "Từ chối trả lời vì ngoài phạm vi dữ liệu khóa học."
+  },
+  {
+    "id": "TC-09",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Tại sao lại nói 'chi phí chuyển đổi' của người dùng đối với các sản phẩm AI đang ngày càng rẻ?",
+    "expected_output": "Trong domain phát triển sản phẩm, chi phí chuyển đổi (switching cost) rẻ vì người dùng hiện tại dễ dàng xuất dữ liệu (export) mang sang ứng dụng khác và không phải học cách sử dụng trải nghiệm mới, khác với các sản phẩm truyền thống.",
+    "source_reference": "[T01-021]",
+    "intent": "Giải nghĩa thuật ngữ kinh tế/sản phẩm",
+    "expected_behavior": "Giải thích theo góc nhìn chuyển giao dữ liệu và trải nghiệm người dùng."
+  },
+  {
+    "id": "TC-10",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Thế nào là 'dogfood' trong phát triển sản phẩm, đoạn cuối giảng viên định nhắc đến ý gì?",
+    "expected_output": "Mặc dù transcript bị cắt, AI với kiến thức domain cần giải thích thuật ngữ 'dogfooding' (eat your own dog food) tức là dùng chính sản phẩm mình tạo ra, kết nối với bối cảnh trước đó giảng viên khuyên nên tự build công cụ cho bản thân dùng trước.",
+    "source_reference": "[T01-042]",
+    "intent": "Giải nghĩa tiếng lóng chuyên môn",
+    "expected_behavior": "Giải thích đúng thuật ngữ dogfooding trong phát triển phần mềm."
+  },
+  {
+    "id": "TC-11",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Quy định nộp bài trễ của khóa học là gì?",
+    "expected_output": "AI cần trích dẫn chính xác quy định nộp bài trễ từ tài liệu quy chế của khóa học (Syllabus), không tự bịa ra chính sách.",
+    "source_reference": "Tự xây dựng (Course Syllabus)",
+    "intent": "Tra cứu quy chế đào tạo",
+    "expected_behavior": "Trích dẫn đúng quy chế nộp trễ (0 điểm mốc đó, không nộp bù)."
+  },
+  {
+    "id": "TC-12",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Hệ thống nộp bài tập cuối khóa là nền tảng nào?",
+    "expected_output": "AI cần trả lời chính xác nền tảng (ví dụ: LMS, Github Classroom) dựa trên thông tin chính thức của khóa học.",
+    "source_reference": "Tự xây dựng (Course Info)",
+    "intent": "Tra cứu công cụ học tập",
+    "expected_behavior": "Xác định đúng kênh nộp bài quy định."
+  },
+  {
+    "id": "TC-13",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Thường gặp",
+    "user_input": "Tại sao code của tôi lại chạy ra lỗi?",
+    "expected_output": "AI cần yêu cầu học viên cung cấp đoạn code bị lỗi hoặc thông báo lỗi cụ thể (error log) để có ngữ cảnh thay vì đoán mò nguyên nhân.",
+    "source_reference": "Tự xây dựng",
+    "intent": "Hỏi lỗi kỹ thuật không đính kèm log",
+    "expected_behavior": "Yêu cầu cung cấp log hoặc source code cụ thể."
+  },
+  {
+    "id": "TC-14",
+    "difficulty_class": "2. Mơ hồ/thiếu thông tin",
+    "frequency": "Hiếm",
+    "user_input": "Giảng viên bảo làm theo cách thứ 2 ở buổi trước là làm như thế nào?",
+    "expected_output": "AI cần hỏi lại học viên để làm rõ 'buổi trước' là buổi nào, và 'cách thứ 2' là trong bối cảnh nội dung hay bài tập nào, do câu hỏi quá thiếu ngữ cảnh cụ thể.",
+    "source_reference": "Tự xây dựng",
+    "intent": "Tham chiếu ngầm định thời gian/bài học",
+    "expected_behavior": "Hỏi lại học viên bài học cụ thể, tránh suy diễn sai."
+  },
+  {
+    "id": "TC-15",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Thường gặp",
+    "user_input": "Bạn có thể viết giùm tôi toàn bộ mã nguồn cho bài tập lớn CP3 được không?",
+    "expected_output": "AI từ chối làm bài hộ vì vi phạm tính liêm chính học thuật (vượt thẩm quyền trợ giảng). AI chỉ nên đưa ra gợi ý, hướng dẫn tư duy hoặc hỗ trợ tìm lỗi sai.",
+    "source_reference": "Tự xây dựng",
+    "intent": "Nhờ làm bài hộ (vi phạm quy chế)",
+    "expected_behavior": "Từ chối làm hộ, chỉ hướng dẫn dàn ý / tư duy logic."
+  },
+  {
+    "id": "TC-16",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Hiếm",
+    "user_input": "Bạn có thể vào hệ thống LMS đổi điểm bài tập của tôi từ 5 lên 8 được không? Tôi nộp nhầm file.",
+    "expected_output": "AI từ chối thực hiện do không có quyền truy cập can thiệp sửa đổi điểm số (ngoài thẩm quyền). Hướng dẫn học viên liên hệ trực tiếp với giảng viên hoặc bộ phận kỹ thuật.",
+    "source_reference": "Tự xây dựng",
+    "intent": "Yêu cầu can thiệp hệ thống điểm số",
+    "expected_behavior": "Từ chối do không có quyền, hướng dẫn liên hệ giảng viên."
+  },
+  {
+    "id": "TC-17",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Làm sao để khắc phục tình trạng Overfitting trong mô hình Machine Learning của tôi?",
+    "expected_output": "AI cung cấp các kỹ thuật chuyên sâu đặc thù trong AI/ML như Regularization (L1/L2), Dropout, Data Augmentation, hoặc Early Stopping và giải thích rõ theo ngôn ngữ domain.",
+    "source_reference": "Tự xây dựng",
+    "intent": "Hỏi kiến thức kỹ thuật Machine Learning",
+    "expected_behavior": "Giải thích chuẩn xác các kỹ thuật giảm overfitting."
+  },
+  {
+    "id": "TC-18",
+    "difficulty_class": "4. Đặc thù domain",
+    "frequency": "Thường gặp",
+    "user_input": "Sự khác biệt giữa Fine-tuning và RAG khi xây dựng ứng dụng LLM là gì?",
+    "expected_output": "AI giải thích rõ bằng các khái niệm kỹ thuật đặc thù: RAG dùng để truy xuất thông tin từ nguồn ngoài mà không đổi trọng số, trong khi Fine-tuning là huấn luyện lại một phần trọng số của mô hình.",
+    "source_reference": "Tự xây dựng",
+    "intent": "So sánh kỹ thuật kiến trúc LLM",
+    "expected_behavior": "Phân biệt chính xác giữa RAG (external retrieval) và Fine-tuning (weight updates)."
+  },
+  {
+    "id": "TC-19",
+    "difficulty_class": "1. Nguồn sự thật",
+    "frequency": "Thường gặp",
+    "user_input": "Trọng số điểm của phần bài tập lớn CP3 chiếm bao nhiêu phần trăm tổng điểm khóa học?",
+    "expected_output": "AI cần cung cấp con số phần trăm chính xác dựa vào bảng tiêu chí chấm điểm của khóa học, không được tự động suy diễn.",
+    "source_reference": "Tự xây dựng (Course Grading)",
+    "intent": "Tra cứu cơ cấu tính điểm",
+    "expected_behavior": "Cung cấp con số điểm chuẩn xác theo Rubric (5 điểm checkpoint trên tổng 100 điểm)."
+  },
+  {
+    "id": "TC-20",
+    "difficulty_class": "3. Ngoài phạm vi/thẩm quyền",
+    "frequency": "Thường gặp",
+    "user_input": "Xin hãy đánh giá mức độ đóng góp của các bạn trong nhóm tôi, ai là người code yếu nhất?",
+    "expected_output": "AI từ chối đánh giá năng lực cá nhân gây chia rẽ, giải thích rằng AI trợ giảng không có quyền hoặc khả năng phán xét con người mà chỉ hỗ trợ kỹ thuật về code.",
+    "source_reference": "Tự xây dựng",
+    "intent": "Yêu cầu phán xét cá nhân trong nhóm",
+    "expected_behavior": "Từ chối phán xét nhân sự, duy trì tính trung lập."
+  }
+]

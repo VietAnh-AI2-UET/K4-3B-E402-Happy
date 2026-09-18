@@ -1,0 +1,498 @@
+2026-09-18 10:42:06,950 - INFO - ================ BẮT ĐẦU GỌI AI (SCRIPT QA) ================
+2026-09-18 10:42:06,953 - INFO - Model: openai/gpt-4o-mini
+2026-09-18 10:42:06,953 - INFO - System Prompt:
+Bạn là một chuyên gia QA (Quality Assurance) rà soát kịch bản trình bày kỹ thuật bằng tiếng Việt.
+Nhiệm vụ của bạn là đọc đoạn kịch bản và chỉ ra CHÍNH XÁC các đoạn (span) gây vấn đề khi "nói ra thành lời".
+KHÔNG BAO GIỜ tự động viết lại toàn bộ văn bản. Không sửa lỗi chính tả/ngữ pháp thông thường. Giữ nguyên văn phong tác giả.
+
+Các loại lỗi (Taxonomy) cần nhận diện:
+1. "Pha tiếng Anh": Lạm dụng từ tiếng Anh không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.
+2. "Sượng / Dịch trực tiếp": Cấu trúc câu sượng, mang dáng dấp dịch trực tiếp từ tài liệu tiếng Anh (Translationese).
+3. "Lạm dụng thuật ngữ": Dùng thuật ngữ quá trừu tượng, khó hiểu đối với người nghe ít chuyên môn.
+4. "Câu quá dài": Không có chỗ ngắt hơi (breath-group overload), khó đọc thành tiếng.
+5. "Lặp ý": Lặp lại nội dung thừa thãi, rườm rà.
+
+ĐẦU RA BẮT BUỘC (Trích xuất dạng JSON):
+Bạn phải trả về một đối tượng JSON chứa key "findings" là một mảng các lỗi tìm thấy. 
+Mỗi phần tử có cấu trúc:
+{
+  "exact_span": "Trích xuất chính xác 100% nguyên văn đoạn bị lỗi từ kịch bản gốc.",
+  "category": "Tên phân loại lỗi (ví dụ: Pha tiếng Anh, Sượng / Dịch trực tiếp, ...)",
+  "severity": "High / Medium / Low",
+  "explanation": "Giải thích ngắn gọn tại sao đoạn này khó nghe hoặc không tự nhiên khi nói.",
+  "suggestion": "Gợi ý cách sửa tối thiểu để câu tự nhiên hơn. Nếu không chắc chắn, hãy để chuỗi rỗng ''."
+}
+
+Nếu văn bản tốt và không tìm thấy lỗi nào thuộc các loại trên, trả về: {"findings": []}
+
+2026-09-18 10:42:06,953 - INFO - User Input:
+Hôm nay mình sẽ demo và optimize model.
+2026-09-18 10:42:10,129 - INFO - Độ trễ API: 3.18s
+2026-09-18 10:42:10,129 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789702914-5Qp9oAikFAsRTyZtAz5g",
+  "object": "chat.completion",
+  "created": 1789702914,
+  "model": "openai/gpt-4o-mini",
+  "provider": "OpenAI",
+  "system_fingerprint": "fp_1e60412049",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"demo và optimize model\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ tiếng Anh 'demo' và 'optimize' trong khi có thể dùng từ tiếng Việt tương đương khiến câu nói không tự nhiên.\",\n      \"suggestion\": \"Thay thế bằng 'trình diễn' và 'tối ưu hóa'.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 483,
+    "completion_tokens": 103,
+    "total_tokens": 586,
+    "cost": 0.00013425,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00013425,
+      "upstream_inference_prompt_cost": 7.245e-05,
+      "upstream_inference_completions_cost": 6.18e-05
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 10:42:10,129 - INFO - ================ KẾT THÚC GỌI AI THÀNH CÔNG ================
+
+2026-09-18 10:47:41,936 - INFO - ================ BẮT ĐẦU GỌI AI (SCRIPT QA) ================
+2026-09-18 10:47:41,938 - INFO - Model: openai/gpt-4o-mini
+2026-09-18 10:47:41,939 - INFO - System Prompt:
+Bạn là một chuyên gia QA (Quality Assurance) rà soát kịch bản trình bày kỹ thuật bằng tiếng Việt.
+Nhiệm vụ của bạn là đọc đoạn kịch bản và chỉ ra CHÍNH XÁC các đoạn (span) gây vấn đề khi "nói ra thành lời".
+KHÔNG BAO GIỜ tự động viết lại toàn bộ văn bản. Không sửa lỗi chính tả/ngữ pháp thông thường. Giữ nguyên văn phong tác giả.
+
+Các loại lỗi (Taxonomy) cần nhận diện:
+1. "Pha tiếng Anh": Lạm dụng từ tiếng Anh không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.
+2. "Sượng / Dịch trực tiếp": Cấu trúc câu sượng, mang dáng dấp dịch trực tiếp từ tài liệu tiếng Anh (Translationese).
+3. "Lạm dụng thuật ngữ": Dùng thuật ngữ quá trừu tượng, khó hiểu đối với người nghe ít chuyên môn.
+4. "Câu quá dài": Không có chỗ ngắt hơi (breath-group overload), khó đọc thành tiếng.
+5. "Lặp ý": Lặp lại nội dung thừa thãi, rườm rà.
+
+ĐẦU RA BẮT BUỘC (Trích xuất dạng JSON):
+Bạn phải trả về một đối tượng JSON chứa key "findings" là một mảng các lỗi tìm thấy. 
+Mỗi phần tử có cấu trúc:
+{
+  "exact_span": "Trích xuất chính xác 100% nguyên văn đoạn bị lỗi từ kịch bản gốc.",
+  "category": "Tên phân loại lỗi (ví dụ: Pha tiếng Anh, Sượng / Dịch trực tiếp, ...)",
+  "severity": "High / Medium / Low",
+  "explanation": "Giải thích ngắn gọn tại sao đoạn này khó nghe hoặc không tự nhiên khi nói.",
+  "suggestion": "Gợi ý cách sửa tối thiểu để câu tự nhiên hơn. Nếu không chắc chắn, hãy để chuỗi rỗng ''."
+}
+
+Nếu văn bản tốt và không tìm thấy lỗi nào thuộc các loại trên, trả về: {"findings": []}
+
+2026-09-18 10:47:41,939 - INFO - User Input:
+Hom nay minh se demo cach he thong xu ly request va optimize output cua model. Sau do team co the leverage context hien co de improve ket qua.
+2026-09-18 10:47:48,728 - INFO - Độ trễ API: 6.79s
+2026-09-18 10:47:48,728 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789703249-pANwMnbXp36csxkZwkxq",
+  "object": "chat.completion",
+  "created": 1789703249,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"leverage context hien co\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Cụm từ 'leverage context hien co' sử dụng từ tiếng Anh không cần thiết, có thể thay thế bằng từ tiếng Việt dễ hiểu hơn.\",\n      \"suggestion\": \"Sử dụng 'tận dụng ngữ cảnh hiện có'.\"\n    },\n    {\n      \"exact_span\": \"optimize output cua model\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Cụm từ 'optimize output cua model' cũng sử dụng từ tiếng Anh không cần thiết, có thể diễn đạt bằng tiếng Việt.\",\n      \"suggestion\": \"Sử dụng 'tối ưu hóa đầu ra của mô hình'.\"\n    },\n    {\n      \"exact_span\": \"Hom nay minh se demo cach he thong xu ly request va optimize output cua model.\",\n      \"category\": \"Câu quá dài\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Câu này quá dài và không có chỗ ngắt hơi, khiến cho việc đọc thành tiếng trở nên khó khăn.\",\n      \"suggestion\": \"Chia câu thành hai câu ngắn hơn.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 504,
+    "completion_tokens": 281,
+    "total_tokens": 785,
+    "cost": 0.0002442,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0002442,
+      "upstream_inference_prompt_cost": 7.56e-05,
+      "upstream_inference_completions_cost": 0.0001686
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 10:47:48,728 - INFO - ================ KẾT THÚC GỌI AI THÀNH CÔNG ================
+
+2026-09-18 11:24:46,988 - INFO - ================ BẮT ĐẦU GỌI AI (SCRIPT QA) ================
+2026-09-18 11:24:46,988 - INFO - Model: openai/gpt-4o-mini
+2026-09-18 11:24:46,989 - INFO - System Prompt:
+Bạn là một chuyên gia QA (Quality Assurance) rà soát kịch bản trình bày kỹ thuật bằng tiếng Việt.
+Nhiệm vụ của bạn là đọc đoạn kịch bản và chỉ ra CHÍNH XÁC các đoạn (span) gây vấn đề khi "nói ra thành lời".
+KHÔNG BAO GIỜ tự động viết lại toàn bộ văn bản. Không sửa lỗi chính tả/ngữ pháp thông thường. Giữ nguyên văn phong tác giả.
+
+Các loại lỗi (Taxonomy) cần nhận diện:
+1. "Pha tiếng Anh": Lạm dụng từ tiếng Anh không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.
+2. "Sượng / Dịch trực tiếp": Cấu trúc câu sượng, mang dáng dấp dịch trực tiếp từ tài liệu tiếng Anh (Translationese).
+3. "Lạm dụng thuật ngữ": Dùng thuật ngữ quá trừu tượng, khó hiểu đối với người nghe ít chuyên môn.
+4. "Câu quá dài": Không có chỗ ngắt hơi (breath-group overload), khó đọc thành tiếng.
+5. "Lặp ý": Lặp lại nội dung thừa thãi, rườm rà.
+
+ĐẦU RA BẮT BUỘC (Trích xuất dạng JSON):
+Bạn phải trả về một đối tượng JSON chứa key "findings" là một mảng các lỗi tìm thấy. 
+Mỗi phần tử có cấu trúc:
+{
+  "exact_span": "Trích xuất chính xác 100% nguyên văn đoạn bị lỗi từ kịch bản gốc.",
+  "category": "Tên phân loại lỗi (ví dụ: Pha tiếng Anh, Sượng / Dịch trực tiếp, ...)",
+  "severity": "High / Medium / Low",
+  "explanation": "Giải thích ngắn gọn tại sao đoạn này khó nghe hoặc không tự nhiên khi nói.",
+  "suggestion": "Gợi ý cách sửa tối thiểu để câu tự nhiên hơn. Nếu không chắc chắn, hãy để chuỗi rỗng ''."
+}
+
+Nếu văn bản tốt và không tìm thấy lỗi nào thuộc các loại trên, trả về: {"findings": []}
+
+2026-09-18 11:24:46,989 - INFO - User Input:
+Hôm nay, mình sẽ demo cách nhóm chuẩn bị nội dung kỹ thuật.
+
+Chúng ta sẽ implement một methodology để optimize output của model. Sau đó, team có thể leverage context hiện có để improve kết quả.
+
+API trả về dữ liệu dạng JSON. Người trình bày cần kiểm tra lại ý nghĩa kỹ thuật trước khi chia sẻ với người nghe.
+2026-09-18 11:24:52,438 - INFO - Độ trễ API: 5.45s
+2026-09-18 11:24:52,438 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789705474-APBhoclKwHLYCwp6C4W3",
+  "object": "chat.completion",
+  "created": 1789705474,
+  "model": "openai/gpt-4o-mini",
+  "provider": "OpenAI",
+  "system_fingerprint": "fp_1e60412049",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"implement một methodology\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'implement' không cần thiết khi có từ 'thực hiện' trong tiếng Việt.\",\n      \"suggestion\": \"thực hiện một phương pháp\"\n    },\n    {\n      \"exact_span\": \"optimize output của model\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'optimize' và 'output' không cần thiết khi có từ 'tối ưu hóa' và 'đầu ra' trong tiếng Việt.\",\n      \"suggestion\": \"tối ưu hóa đầu ra của mô hình\"\n    },\n    {\n      \"exact_span\": \"leverage context hiện có để improve kết quả\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'leverage' và 'improve' không cần thiết khi có từ 'tận dụng' và 'cải thiện' trong tiếng Việt.\",\n      \"suggestion\": \"tận dụng bối cảnh hiện có để cải thiện kết quả\"\n    },\n    {\n      \"exact_span\": \"API trả về dữ liệu dạng JSON\",\n      \"category\": \"Lạm dụng thuật ngữ\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng thuật ngữ 'API' và 'JSON' có thể khó hiểu với người nghe ít chuyên môn.\",\n      \"suggestion\": \"Hệ thống trả về dữ liệu dưới dạng JSON\"\n    },\n    {\n      \"exact_span\": \"kiểm tra lại ý nghĩa kỹ thuật trước khi chia sẻ với người nghe\",\n      \"category\": \"Câu quá dài\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Câu này quá dài và có thể gây khó khăn cho người nghe khi theo dõi.\",\n      \"suggestion\": \"kiểm tra lại ý nghĩa kỹ thuật trước khi chia sẻ.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 545,
+    "completion_tokens": 439,
+    "total_tokens": 984,
+    "cost": 0.00034515,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00034515,
+      "upstream_inference_prompt_cost": 8.175e-05,
+      "upstream_inference_completions_cost": 0.0002634
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 11:24:52,438 - INFO - ================ KẾT THÚC GỌI AI THÀNH CÔNG ================
+
+2026-09-18 11:49:51,182 - ERROR - Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\longd\AppData\Local\Programs\Python\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\longd\AppData\Local\Programs\Python\Python312\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-09-18 11:58:39,240 - INFO - ================ BẮT ĐẦU GỌI AI (SCRIPT QA) ================
+2026-09-18 11:58:39,243 - INFO - Model: openai/gpt-4o-mini
+2026-09-18 11:58:39,243 - INFO - System Prompt:
+Bạn là một chuyên gia QA (Quality Assurance) rà soát kịch bản trình bày kỹ thuật bằng tiếng Việt.
+Nhiệm vụ của bạn là đọc đoạn kịch bản và chỉ ra CHÍNH XÁC các đoạn (span) gây vấn đề khi "nói ra thành lời".
+KHÔNG BAO GIỜ tự động viết lại toàn bộ văn bản. Không sửa lỗi chính tả/ngữ pháp thông thường. Giữ nguyên văn phong tác giả.
+
+Các loại lỗi (Taxonomy) cần nhận diện:
+1. "Pha tiếng Anh": Lạm dụng từ tiếng Anh không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.
+2. "Sượng / Dịch trực tiếp": Cấu trúc câu sượng, mang dáng dấp dịch trực tiếp từ tài liệu tiếng Anh (Translationese).
+3. "Lạm dụng thuật ngữ": Dùng thuật ngữ quá trừu tượng, khó hiểu đối với người nghe ít chuyên môn.
+4. "Câu quá dài": Không có chỗ ngắt hơi (breath-group overload), khó đọc thành tiếng.
+5. "Lặp ý": Lặp lại nội dung thừa thãi, rườm rà.
+
+ĐẦU RA BẮT BUỘC (Trích xuất dạng JSON):
+Bạn phải trả về một đối tượng JSON chứa key "findings" là một mảng các lỗi tìm thấy. 
+Mỗi phần tử có cấu trúc:
+{
+  "exact_span": "Trích xuất chính xác 100% nguyên văn đoạn bị lỗi từ kịch bản gốc.",
+  "category": "Tên phân loại lỗi (ví dụ: Pha tiếng Anh, Sượng / Dịch trực tiếp, ...)",
+  "severity": "High / Medium / Low",
+  "explanation": "Giải thích ngắn gọn tại sao đoạn này khó nghe hoặc không tự nhiên khi nói.",
+  "suggestion": "Gợi ý cách sửa tối thiểu để câu tự nhiên hơn. Nếu không chắc chắn, hãy để chuỗi rỗng ''."
+}
+
+Nếu văn bản tốt và không tìm thấy lỗi nào thuộc các loại trên, trả về: {"findings": []}
+
+2026-09-18 11:58:39,243 - INFO - User Input:
+Hôm nay, mình sẽ demo cách nhóm chuẩn bị nội dung kỹ thuật.
+
+Chúng ta sẽ implement một methodology để optimize output của model. Sau đó, team có thể leverage context hiện có để improve kết quả.
+
+API trả về dữ liệu dạng JSON. Người trình bày cần kiểm tra lại ý nghĩa kỹ thuật trước khi chia sẻ với người nghe.
+2026-09-18 11:58:47,234 - INFO - Độ trễ API: 7.99s
+2026-09-18 11:58:47,234 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789707506-iL0NFkj4mjGxzZustL5z",
+  "object": "chat.completion",
+  "created": 1789707506,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"implement một methodology\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'implement' không cần thiết khi có từ 'triển khai' trong tiếng Việt.\",\n      \"suggestion\": \"triển khai một phương pháp\"\n    },\n    {\n      \"exact_span\": \"optimize output của model\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'optimize' và 'output' không cần thiết khi có từ 'tối ưu hóa' và 'đầu ra' trong tiếng Việt.\",\n      \"suggestion\": \"tối ưu hóa đầu ra của mô hình\"\n    },\n    {\n      \"exact_span\": \"leverage context hiện có\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'leverage' không cần thiết khi có từ 'tận dụng' trong tiếng Việt.\",\n      \"suggestion\": \"tận dụng ngữ cảnh hiện có\"\n    },\n    {\n      \"exact_span\": \"improve kết quả\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'improve' không cần thiết khi có từ 'cải thiện' trong tiếng Việt.\",\n      \"suggestion\": \"cải thiện kết quả\"\n    },\n    {\n      \"exact_span\": \"API trả về dữ liệu dạng JSON.\",\n      \"category\": \"Lạm dụng thuật ngữ\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng thuật ngữ 'API' và 'JSON' có thể gây khó hiểu cho người nghe không chuyên.\",\n      \"suggestion\": \"Hệ thống trả về dữ liệu dưới dạng JSON.\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 545,
+    "completion_tokens": 405,
+    "total_tokens": 950,
+    "cost": 0.00032475,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00032475,
+      "upstream_inference_prompt_cost": 8.175e-05,
+      "upstream_inference_completions_cost": 0.000243
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 11:58:47,234 - INFO - ================ KẾT THÚC GỌI AI THÀNH CÔNG ================
+
+2026-09-18 11:59:36,465 - INFO - ================ BẮT ĐẦU GỌI AI (SCRIPT QA) ================
+2026-09-18 11:59:36,465 - INFO - Model: openai/gpt-4o-mini
+2026-09-18 11:59:36,465 - INFO - System Prompt:
+Bạn là một chuyên gia QA (Quality Assurance) rà soát kịch bản trình bày kỹ thuật bằng tiếng Việt.
+Nhiệm vụ của bạn là đọc đoạn kịch bản và chỉ ra CHÍNH XÁC các đoạn (span) gây vấn đề khi "nói ra thành lời".
+KHÔNG BAO GIỜ tự động viết lại toàn bộ văn bản. Không sửa lỗi chính tả/ngữ pháp thông thường. Giữ nguyên văn phong tác giả.
+
+Các loại lỗi (Taxonomy) cần nhận diện:
+1. "Pha tiếng Anh": Lạm dụng từ tiếng Anh không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.
+2. "Sượng / Dịch trực tiếp": Cấu trúc câu sượng, mang dáng dấp dịch trực tiếp từ tài liệu tiếng Anh (Translationese).
+3. "Lạm dụng thuật ngữ": Dùng thuật ngữ quá trừu tượng, khó hiểu đối với người nghe ít chuyên môn.
+4. "Câu quá dài": Không có chỗ ngắt hơi (breath-group overload), khó đọc thành tiếng.
+5. "Lặp ý": Lặp lại nội dung thừa thãi, rườm rà.
+
+ĐẦU RA BẮT BUỘC (Trích xuất dạng JSON):
+Bạn phải trả về một đối tượng JSON chứa key "findings" là một mảng các lỗi tìm thấy. 
+Mỗi phần tử có cấu trúc:
+{
+  "exact_span": "Trích xuất chính xác 100% nguyên văn đoạn bị lỗi từ kịch bản gốc.",
+  "category": "Tên phân loại lỗi (ví dụ: Pha tiếng Anh, Sượng / Dịch trực tiếp, ...)",
+  "severity": "High / Medium / Low",
+  "explanation": "Giải thích ngắn gọn tại sao đoạn này khó nghe hoặc không tự nhiên khi nói.",
+  "suggestion": "Gợi ý cách sửa tối thiểu để câu tự nhiên hơn. Nếu không chắc chắn, hãy để chuỗi rỗng ''."
+}
+
+Nếu văn bản tốt và không tìm thấy lỗi nào thuộc các loại trên, trả về: {"findings": []}
+
+2026-09-18 11:59:36,465 - INFO - User Input:
+Hôm nay, mình sẽ demo cách nhóm chuẩn bị nội dung kỹ thuật.
+
+Chúng ta sẽ implement một methodology để optimize output của model. Sau đó, team có thể leverage context hiện có để improve kết quả.
+
+API trả về dữ liệu dạng JSON. Người trình bày cần kiểm tra lại ý nghĩa kỹ thuật trước khi chia sẻ với người nghe.
+2026-09-18 11:59:39,903 - INFO - Độ trễ API: 3.44s
+2026-09-18 11:59:39,903 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789707563-oAfD3VfTzZpHhqVCGMj0",
+  "object": "chat.completion",
+  "created": 1789707563,
+  "model": "openai/gpt-4o-mini",
+  "provider": "OpenAI",
+  "system_fingerprint": "fp_ed795aee21",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"implement một methodology để optimize output của model\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'implement', 'methodology', 'optimize', và 'output' không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.\",\n      \"suggestion\": \"thực hiện một phương pháp để tối ưu hóa kết quả của mô hình\"\n    },\n    {\n      \"exact_span\": \"team có thể leverage context hiện có để improve kết quả\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'leverage' và 'improve' không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.\",\n      \"suggestion\": \"nhóm có thể tận dụng ngữ cảnh hiện có để cải thiện kết quả\"\n    },\n    {\n      \"exact_span\": \"API trả về dữ liệu dạng JSON\",\n      \"category\": \"Lạm dụng thuật ngữ\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Câu này có thể gây khó hiểu cho người nghe không chuyên về công nghệ thông tin.\",\n      \"suggestion\": \"API trả về dữ liệu dưới định dạng JSON\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 545,
+    "completion_tokens": 282,
+    "total_tokens": 827,
+    "cost": 0.00025095,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00025095,
+      "upstream_inference_prompt_cost": 8.175e-05,
+      "upstream_inference_completions_cost": 0.0001692
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 11:59:39,905 - INFO - ================ KẾT THÚC GỌI AI THÀNH CÔNG ================
+
+2026-09-18 11:59:46,606 - INFO - ================ BẮT ĐẦU GỌI AI (SCRIPT QA) ================
+2026-09-18 11:59:46,607 - INFO - Model: openai/gpt-4o-mini
+2026-09-18 11:59:46,607 - INFO - System Prompt:
+Bạn là một chuyên gia QA (Quality Assurance) rà soát kịch bản trình bày kỹ thuật bằng tiếng Việt.
+Nhiệm vụ của bạn là đọc đoạn kịch bản và chỉ ra CHÍNH XÁC các đoạn (span) gây vấn đề khi "nói ra thành lời".
+KHÔNG BAO GIỜ tự động viết lại toàn bộ văn bản. Không sửa lỗi chính tả/ngữ pháp thông thường. Giữ nguyên văn phong tác giả.
+
+Các loại lỗi (Taxonomy) cần nhận diện:
+1. "Pha tiếng Anh": Lạm dụng từ tiếng Anh không cần thiết khi có từ tiếng Việt tương đương dễ hiểu hơn.
+2. "Sượng / Dịch trực tiếp": Cấu trúc câu sượng, mang dáng dấp dịch trực tiếp từ tài liệu tiếng Anh (Translationese).
+3. "Lạm dụng thuật ngữ": Dùng thuật ngữ quá trừu tượng, khó hiểu đối với người nghe ít chuyên môn.
+4. "Câu quá dài": Không có chỗ ngắt hơi (breath-group overload), khó đọc thành tiếng.
+5. "Lặp ý": Lặp lại nội dung thừa thãi, rườm rà.
+
+ĐẦU RA BẮT BUỘC (Trích xuất dạng JSON):
+Bạn phải trả về một đối tượng JSON chứa key "findings" là một mảng các lỗi tìm thấy. 
+Mỗi phần tử có cấu trúc:
+{
+  "exact_span": "Trích xuất chính xác 100% nguyên văn đoạn bị lỗi từ kịch bản gốc.",
+  "category": "Tên phân loại lỗi (ví dụ: Pha tiếng Anh, Sượng / Dịch trực tiếp, ...)",
+  "severity": "High / Medium / Low",
+  "explanation": "Giải thích ngắn gọn tại sao đoạn này khó nghe hoặc không tự nhiên khi nói.",
+  "suggestion": "Gợi ý cách sửa tối thiểu để câu tự nhiên hơn. Nếu không chắc chắn, hãy để chuỗi rỗng ''."
+}
+
+Nếu văn bản tốt và không tìm thấy lỗi nào thuộc các loại trên, trả về: {"findings": []}
+
+2026-09-18 11:59:46,607 - INFO - User Input:
+Hôm nay, mình sẽ demo cách nhóm chuẩn bị nội dung kỹ thuật.
+
+Chúng ta sẽ implement một methodology để optimize output của model. Sau đó, team có thể leverage context hiện có để improve kết quả.
+
+API trả về dữ liệu dạng JSON. Người trình bày cần kiểm tra lại ý nghĩa kỹ thuật trước khi chia sẻ với người nghe.
+2026-09-18 11:59:52,389 - INFO - Độ trễ API: 5.78s
+2026-09-18 11:59:52,389 - INFO - Phản hồi thô từ API (Raw response):
+{
+  "id": "gen-1789707573-bISCR3EjAX2kc3q9Ksof",
+  "object": "chat.completion",
+  "created": 1789707573,
+  "model": "openai/gpt-4o-mini",
+  "provider": "Azure",
+  "system_fingerprint": "fp_369e662417",
+  "service_tier": null,
+  "choices": [
+    {
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "native_finish_reason": "stop",
+      "message": {
+        "role": "assistant",
+        "content": "{\n  \"findings\": [\n    {\n      \"exact_span\": \"implement một methodology\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'implement' không cần thiết khi có từ 'thực hiện' trong tiếng Việt.\",\n      \"suggestion\": \"thực hiện một phương pháp\"\n    },\n    {\n      \"exact_span\": \"optimize output của model\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'optimize' không cần thiết khi có từ 'tối ưu hóa' trong tiếng Việt.\",\n      \"suggestion\": \"tối ưu hóa đầu ra của mô hình\"\n    },\n    {\n      \"exact_span\": \"leverage context hiện có để improve kết quả\",\n      \"category\": \"Pha tiếng Anh\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Sử dụng từ 'leverage' và 'improve' không cần thiết khi có từ 'tận dụng' và 'cải thiện' trong tiếng Việt.\",\n      \"suggestion\": \"tận dụng ngữ cảnh hiện có để cải thiện kết quả\"\n    },\n    {\n      \"exact_span\": \"API trả về dữ liệu dạng JSON\",\n      \"category\": \"Lạm dụng thuật ngữ\",\n      \"severity\": \"Medium\",\n      \"explanation\": \"Câu này có thể gây khó hiểu cho người nghe không chuyên về công nghệ.\",\n      \"suggestion\": \"Hệ thống sẽ trả về dữ liệu dưới định dạng JSON\"\n    }\n  ]\n}",
+        "refusal": null,
+        "reasoning": null
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 545,
+    "completion_tokens": 337,
+    "total_tokens": 882,
+    "cost": 0.00028395,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.00028395,
+      "upstream_inference_prompt_cost": 8.175e-05,
+      "upstream_inference_completions_cost": 0.0002022
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  }
+}
+2026-09-18 11:59:52,389 - INFO - ================ KẾT THÚC GỌI AI THÀNH CÔNG ================
+
