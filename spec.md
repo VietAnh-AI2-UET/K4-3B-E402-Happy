@@ -97,3 +97,4 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
 ## §9. Changelog
 | Thời điểm | Đổi gì | Vì sao (trỏ về feedback/case nào) |
 |---|---|---|
+| 2026-09-18 01:10:53 | Thêm trường "intent" và "expected_behavior" vào test-case | Làm rõ tiêu chí đánh giá và mục đích của từng case, giúp con người chấm chéo (Inter-rater Agreement) hoặc AI tự động chấm chính xác, khách quan hơn, tránh mơ hồ |
