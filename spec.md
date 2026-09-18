@@ -2,7 +2,6 @@
 
 > Cấu trúc phủ đúng "SPEC 8 phần" của chương trình: Bằng chứng (§1-§2) · Lát cắt (§4) · Canvas (đính kèm CP1) · Augment/Automate (§4) · 4 đường đi của trải nghiệm (§6) · Kiểu lỗi (§5) · Kiểm thử (§7) · Phân công (§8). Hướng dẫn viết từng mục: `02-guide.md`.
 
-```markdown
 # AI SPEC — [Vietnamese Spoken-Script QA — Agent review kịch bản] · Nhóm [Happy] · Zone [C1]
 Hướng: [] A — VLearn  [X] B — Trợ lý Học viên  [ ] C — Làn mở
 Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
@@ -56,6 +55,16 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
   | **G11. Giải thích vì sao** | Bên dưới mỗi đoạn văn bản được highlight, hệ thống hiển thị lý do tại sao đoạn đó bị đánh dấu (vd: lạm dụng thuật ngữ, pha tiếng Anh...). |
 
 ## §5. Kiểu lỗi — 4 lớp chỗ khó + kịch bản (≥8) [bảng theo guide §2.5]
+| Lớp chỗ khó | Loại lỗi / Kịch bản (Ví dụ) | Hành vi mong đợi của AI | Lỗi AI thường gặp (Run 1) |
+|---|---|---|---|
+| **1. Nguồn sự thật** | *"Product Manager và Project Manager khác nhau như thế nào theo bài giảng?"* (TC-02) | Bắt đúng "Product Manager" và "Project Manager", bỏ qua "theo bài giảng". | **False Positive & Negative:** Bắt nhầm "theo bài giảng", sót từ ngoại lai. |
+| **2. Mơ hồ/thiếu info** | *"Tại sao code của tôi lại chạy ra lỗi?"* (TC-13) | Nhận diện từ "code" và gợi ý "mã nguồn". | **False Negative:** Trả về rỗng, bỏ sót từ cần bắt. |
+| **3. Ngoài thẩm quyền** | *"Ai trong nhóm code yếu nhất?"* (TC-20) | Chỉ phân tích ngôn từ "code", không đánh giá nội dung câu hỏi. | **Misalignment:** Đánh giá tính đạo đức/xúc phạm của câu hỏi thay vì phân tích văn bản. |
+| **4. Đặc thù domain** | *"Tại sao lại nói 'chi phí chuyển đổi' đang ngày càng rẻ?"* (TC-09) | Hiểu "chi phí chuyển đổi" là thuật ngữ tiếng Việt chuẩn, không bắt lỗi. | **False Positive:** Đánh dấu cụm thuần Việt là "Pha tiếng Anh". |
+| **1. Nguồn sự thật** | *"Viết giùm toàn bộ code CP3"* (TC-15) | Bắt cụm "code" để gợi ý "mã nguồn", không bắt các từ tiếng Việt khác. | **False Positive:** Bắt nhầm "toàn bộ mã nguồn cho bài tập lớn CP3" là pha tiếng Anh. |
+| **2. Mơ hồ/thiếu info** | *"Đổi điểm LMS từ 5 lên 8, tôi nộp nhầm file."* (TC-16) | Nhận diện được từ ngoại lai "file" và "LMS". | **False Negative:** Bỏ sót từ mượn "file". |
+| **3. Ngoài thẩm quyền** | *"Có nên đuổi nhân sự cũ tuyển AI?"* (TC-07) | Chỉ gợi ý về từ "AI engineer" (nếu có) thay vì phân tích việc đuổi người. | Đạt: Giữ ranh giới trung lập. |
+| **4. Đặc thù domain** | *"Khắc phục Overfitting trong ML"* (TC-17) | Nhận diện thuật ngữ chuyên ngành "Overfitting" và "Machine Learning". | Đạt: Gợi ý các thuật ngữ tiếng Việt phù hợp (Quá khớp, Học máy). |
 
 ## §6. Bốn đường đi của trải nghiệm
 - Happy path: Người dùng dán kịch bản nằm trong bộ hỗ trợ -> Hệ thống phân tích, highlight các lỗi -> Người dùng tuần tự duyệt và bấm "Áp dụng gợi ý" / "Giữ nguyên" -> Xem bản hoàn chỉnh và tải file TXT.
@@ -66,10 +75,13 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
 - Case đặc thù domain (④): Kịch bản có chứa các block code, log JSON, API request. AI cần nhận diện và bỏ qua các đoạn này, chỉ rà soát văn bản tự nhiên.
 
 ## §7. Kiểm thử
-- Chiều chất lượng + định nghĩa kiểm chứng được:
-- Golden set (≥20 case theo cơ cấu trong guide §2.6, file trong eval/):
-- Quality bar (chốt từ hạn chốt spec của khoá, giữ nguyên sau đó): "Đạt khi ≥ ___% qua bộ, và ___"
+- Chiều chất lượng + định nghĩa kiểm chứng được: Đánh giá theo thang 3 mức (1) **Dùng được** (Acceptable - Đạt); (2) **Sửa được** (Needs Revision); (3) **Không chấp nhận được** (Unacceptable: False Positive nặng hoặc Misalignment). Tiêu chí được kiểm chứng chéo độc lập (Inter-rater Agreement) với độ đồng thuận đạt 100%.
+- Golden set (≥20 case theo cơ cấu trong guide §2.6, file trong eval/): Bộ 20 test cases (TC-01 đến TC-20) chia cho 4 lớp chỗ khó (Nguồn sự thật, Mơ hồ/thiếu info, Ngoài thẩm quyền, Đặc thù domain). Chi tiết lưu tại `codebase/eval/v0_run1_eval.md`.
+- Quality bar (chốt từ hạn chốt spec của khoá, giữ nguyên sau đó): "Đạt khi ≥ **80%** qua bộ (đạt Mức 1), và **tỷ lệ Inter-rater Agreement (chấm chéo) ≥ 80%**."
 - Kết quả các lượt chạy (bảng % — cập nhật đến trước CP6):
+  | Lượt chạy | Mô hình | Tổng case | ĐẠT (Mức 1) | THẤT BẠI | Tỷ lệ thành công | Ghi chú |
+  |---|---|---|---|---|---|---|
+  | **Run 1** | `openai/gpt-4o-mini` | 20 | 13 | 7 | **65.0%** | Base Run: 80%, Group Run: 50%. Các lỗi chính: False Positive, False Negative, Misalignment (xem báo cáo Run 1). |
 
 ## §8. Phân công & kế hoạch
 - Phân công có tên: spec / evidence / prompt / code / demo
@@ -78,4 +90,3 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
 
 ## §9. Changelog
 | Thời điểm | Đổi gì | Vì sao (trỏ về feedback/case nào) |
-```
