@@ -85,7 +85,7 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
   - Prompt & Evaluation: Bùi Việt Anh
   - Code & UI (Streamlit): Võ Công Danh
   - Demo: Cả nhóm
-- Willing users (≥2 tên) + kế hoạch vòng validation *(bonus, nếu làm)*: Nguyễn Minh Tuấn, Nguyễn Mạnh Hùng. Kế hoạch: Gửi bản prototype Streamlit cho 2 willing users sử dụng thử với kịch bản demo thực tế của họ. Phỏng vấn ngắn 15 phút về tính hữu ích của các gợi ý và ghi nhận điểm cần cải thiện UI.
+- Willing users (≥2 tên) + kế hoạch vòng validation *(bonus, nếu làm)*: Nguyễn Minh Tuấn, Trần Mạnh Hùng. Kế hoạch: Gửi bản prototype Streamlit cho 2 willing users sử dụng thử với kịch bản demo thực tế của họ. Phỏng vấn ngắn 15 phút về tính hữu ích của các gợi ý và ghi nhận điểm cần cải thiện UI.
 - Multi-prototype (nếu làm): 
   - Trục khác biệt: Hiển thị lỗi trực tiếp trên văn bản (inline edit) vs Hiển thị danh sách lỗi ở sidebar (list review). 
   - Lý do chọn: Chọn hiển thị danh sách lỗi vì người dùng có thể thấy rõ ràng từng lỗi và lời giải thích trước khi ra quyết định (áp dụng nguyên tắc G11).
