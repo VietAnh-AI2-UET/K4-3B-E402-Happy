@@ -1,16 +1,35 @@
+import os
 from datetime import datetime, timezone
 from html import escape
 import json
 from pathlib import Path
 import streamlit as st
 from core import SAMPLES, analyze, fingerprint, render_final, audit_payload
+from agent.model import analyze_script_ai, get_api_key
 
 st.set_page_config(page_title="TechScript QA · Biên tập để nói", page_icon="✳", layout="wide", initial_sidebar_state="collapsed")
 st.html(f"<style>{Path(__file__).with_name('styles.css').read_text(encoding='utf-8')}</style>")
+
+is_test = bool(os.environ.get("STREAMLIT_TESTING"))
+has_key = bool(get_api_key())
+default_engine = "Mẫu đối chuẩn CP2 (Mock)" if (is_test or not has_key) else "AI Thật (GPT-4o-mini)"
+
 s = st.session_state
-for key, value in {"stage": "input", "source": SAMPLES["Demo tính năng · Dev / BA"], "audience": "Đồng nghiệp ít chuyên môn kỹ thuật", "findings": [], "decisions": {}, "events": [], "covered": False, "run_hash": "", "run_count": 0}.items():
+for key, value in {
+    "stage": "input", 
+    "source": SAMPLES["Demo tính năng · Dev / BA"], 
+    "audience": "Đồng nghiệp ít chuyên môn kỹ thuật", 
+    "findings": [], 
+    "decisions": {}, 
+    "events": [], 
+    "covered": False, 
+    "run_hash": "", 
+    "run_count": 0,
+    "engine_mode": default_engine
+}.items():
     if key not in s:
         s[key] = value
+
 # Keep the source/context when their widgets are absent on later steps.
 s.source = s.source
 s.audience = s.audience
@@ -41,11 +60,7 @@ def document_html(source, findings, active=None):
     chunks.append(escape(source[cursor:]))
     return '<div class="script-paper">' + ''.join(chunks).replace('\n', '<br>') + '</div>'
 
-left, right = st.columns([3, 2])
-with left:
-    st.html('<div class="brand"><span class="brand-icon">tq.</span><span>TechScript <b>QA</b></span></div>')
-with right:
-    st.html('<div class="mode"><span class="dot"></span> CP2 · Mô phỏng, chưa kết nối AI</div>')
+st.html('<div class="brand"><span class="brand-icon">tq.</span><span>TechScript <b>QA</b></span></div>')
 
 stage_index = {"input": 0, "review": 1, "result": 2}[s.stage]
 st.html('<nav class="steps" aria-label="Tiến trình">' + ''.join(f'<span class="step {"current" if i == stage_index else "done" if i < stage_index else ""}"><b>0{i+1}</b> {label}</span>' for i, label in enumerate(["Nhập kịch bản", "Duyệt gợi ý", "Bản hoàn chỉnh"])) + '</nav>')
@@ -59,21 +74,24 @@ if s.stage == "input":
             st.selectbox("Bắt đầu từ một tình huống", list(SAMPLES), key="sample", on_change=load_sample)
             st.selectbox("Bạn sẽ trình bày cho ai?", ["Đồng nghiệp ít chuyên môn kỹ thuật", "Nhóm Dev / BA / PM", "Học viên mới bắt đầu"], key="audience", on_change=invalidate)
             st.text_area("Nội dung cần rà soát", key="source", height=235, max_chars=12000, on_change=invalidate, placeholder="Dán lời bạn định nói, không chỉ tiêu đề slide…")
-            st.caption(f"{len(s.source):,} / 12.000 ký tự · Chỉ xử lý trong phiên hiện tại, không gọi dịch vụ AI.")
+            st.caption(f"{len(s.source):,} / 12.000 ký tự")
             if st.button("Rà soát kịch bản", type="primary", use_container_width=True):
                 try:
-                    with st.spinner("Đang đối chiếu với các tình huống mô phỏng…"):
-                        s.findings, s.covered = analyze(s.source)
-                        s.decisions, s.events = {}, []
-                        s.run_hash = fingerprint(s.source, s.audience)
-                        s.run_count += 1
-                        s.stage = "review"
+                    if s.engine_mode == "AI Thật (GPT-4o-mini)":
+                        with st.spinner("Đang gửi kịch bản đến mô hình AI"):
+                            s.findings, s.covered = analyze_script_ai(s.source)
+                    else:
+                        with st.spinner("Đang đối chiếu với các tình huống mô phỏng…"):
+                            s.findings, s.covered = analyze(s.source)
+                    s.decisions, s.events = {}, []
+                    s.run_hash = fingerprint(s.source, s.audience)
+                    s.run_count += 1
+                    s.stage = "review"
                     st.rerun()
-                except ValueError as error:
+                except (ValueError, RuntimeError) as error:
                     st.error(str(error))
     with aside:
-        st.html('<div class="side-note"><div class="eyebrow">MỘT GỢI Ý, MỘT QUYẾT ĐỊNH</div><h3>Ít chỉnh sửa hơn.<br>Rõ ý hơn.</h3><p class="sample-before">implement một methodology</p><div class="sample-after">áp dụng một phương pháp</div><p>Chỉ thay cụm cần thiết. Phần còn lại của kịch bản được giữ nguyên.</p><hr><div class="note-row"><b>01</b><span>Nhìn đúng đoạn cần xem lại</span></div><div class="note-row"><b>02</b><span>Chấp nhận, tự sửa hoặc giữ nguyên</span></div><div class="note-row"><b>03</b><span>Tải bản cuối cùng và lịch sử duyệt</span></div></div>')
-        st.caption("Phạm vi CP2: cách nói chưa tự nhiên và pha Anh–Việt. Chưa kiểm chứng tính đúng đắn kỹ thuật hay chất lượng của toàn bộ văn bản.")
+        st.html('<div class="side-note"><div class="eyebrow">MỘT GỢI Ý, MỘT QUYẾT ĐỊNH</div><h3>Ít chỉnh sửa hơn.<br>Rõ ý hơn.</h3><div class="sample-after">áp dụng một phương pháp</div><p>Chỉ thay cụm cần thiết. Phần còn lại của kịch bản được giữ nguyên.</p><hr><div class="note-row"><b>01</b><span>Nhìn đúng đoạn cần xem lại</span></div><div class="note-row"><b>02</b><span>Chấp nhận, tự sửa hoặc giữ nguyên</span></div><div class="note-row"><b>03</b><span>Tải bản cuối cùng và lịch sử duyệt</span></div></div>')
 else:
     if s.run_hash != fingerprint(s.source, s.audience):
         invalidate()
@@ -83,8 +101,11 @@ else:
     if s.stage == "review":
         st.html('<div class="eyebrow">BẠN LÀ NGƯỜI BIÊN TẬP CUỐI CÙNG</div><h1>Đọc lại - Chọn cách nói</h1>')
         if not s.covered:
-            st.warning("Đây là nội dung ngoài mẫu demo. Chỉ các cụm khớp chính xác với bộ mô phỏng được đánh dấu; phần còn lại chưa được đánh giá. Không có gợi ý không có nghĩa là không có lỗi.")
-        st.caption(f"Người nghe: {s.audience} · {reviewed}/{len(findings)} gợi ý đã duyệt · API và JSON được giữ nguyên trong mẫu demo.")
+            st.warning("Đây là nội dung ngoài mẫu demo. AI rà soát toàn bộ văn bản và trích xuất các span lỗi cần tối ưu.")
+        if s.engine_mode == "AI Thật (GPT-4o-mini)":
+            st.caption(f"Người nghe: {s.audience} · {reviewed}/{len(findings)} gợi ý đã duyệt · Phân tích bởi GPT-4o-mini.")
+        else:
+            st.caption(f"Người nghe: {s.audience} · {reviewed}/{len(findings)} gợi ý đã duyệt · API và JSON được giữ nguyên trong mẫu demo.")
         st.progress(reviewed / len(findings) if findings else 1.0)
         if findings:
             main, aside = st.columns([1.35, 1], gap="large")

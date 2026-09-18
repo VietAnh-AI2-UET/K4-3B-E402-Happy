@@ -1,3 +1,5 @@
+import os
+os.environ["STREAMLIT_TESTING"] = "1"
 import unittest
 from pathlib import Path
 from streamlit.testing.v1 import AppTest
