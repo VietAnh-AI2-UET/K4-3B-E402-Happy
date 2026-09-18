@@ -38,8 +38,8 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
   - (1) Chuẩn bị lời trình bày cho Demo sản phẩm & (2) Technical Sharing: Được chọn vì có lượng người dùng cao nhất (9/13 và 7/13 người), tần suất đều đặn (1-5 lần/tháng). Hậu quả trực tiếp là làm **buổi trình bày kéo dài (54% người bị)** và phải nhờ **đồng nghiệp review lại (38% người bị)**, do đó một công cụ QA Review tự động rà soát câu "sượng", lạm dụng thuật ngữ hoặc "pha tiếng Anh" sẽ mang lại giá trị tiết kiệm thời gian ngay lập tức (giảm từ 15-60 phút chuẩn bị) cho người dùng.
 
 ## §3. Giải pháp tương tự đã nghiên cứu
-- [Sản phẩm 1]: flow / đáng học / đáng né / mình khác gì
-- [Sản phẩm 2]: ...
+- [Grammarly]: flow: Bôi đỏ lỗi trực tiếp trên text và gợi ý thay thế khi click vào / đáng học: Giao diện trực quan, cho phép người dùng click để áp dụng ngay / đáng né: Đôi khi gợi ý sai ngữ cảnh chuyên ngành, tự động sửa cả những từ đã cố tình dùng / mình khác gì: Tập trung vào phát hiện "pha tiếng Anh" và thuật ngữ kỹ thuật khó hiểu, không chỉ là ngữ pháp tiếng Anh.
+- [ChatGPT (General Prompt)]: flow: Người dùng copy paste text vào chat và yêu cầu "sửa lại cho tự nhiên" / đáng học: Sửa câu mượt mà, hiểu nhiều ngữ cảnh / đáng né: Tự động sửa lại toàn bộ khiến người dùng mất kiểm soát, dễ làm sai lệch ý nghĩa kỹ thuật (Cost of error cao) / mình khác gì: Đi theo hướng Augment, gợi ý từng lỗi nhỏ và để người dùng tự quyết định (duyệt từng gợi ý), tránh thay đổi toàn bộ văn bản.
 
 ## §4. Thiết kế
 - Lát cắt MỘT CÂU (1 user · 1 việc · 1 quyết định AI · 1 kết quả): Developer nhập kịch bản trình bày kỹ thuật · yêu cầu hệ thống rà soát cách diễn đạt · AI đánh dấu các cụm từ pha tiếng Anh/lạm dụng thuật ngữ và gợi ý cách nói tự nhiên hơn · người dùng duyệt từng gợi ý (áp dụng, tự sửa hoặc giữ nguyên) và nhận bản kịch bản hoàn chỉnh.
@@ -84,9 +84,16 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
   | **Run 1** | `openai/gpt-4o-mini` | 20 | 13 | 7 | **65.0%** | Base Run: 80%, Group Run: 50%. Các lỗi chính: False Positive, False Negative, Misalignment (xem báo cáo Run 1). |
 
 ## §8. Phân công & kế hoạch
-- Phân công có tên: spec / evidence / prompt / code / demo
-- Willing users (≥2 tên) + kế hoạch vòng validation *(bonus, nếu làm)*:
-- Multi-prototype (nếu làm): trục khác biệt của ≥2 phương án + lý do chọn:
+- Phân công có tên: 
+  - Spec & Evidence: Đinh Đức Long
+  - Prompt & Evaluation: Bùi Việt Anh
+  - Code & UI (Streamlit): Võ Công Danh
+  - Demo: Cả nhóm
+- Willing users (≥2 tên) + kế hoạch vòng validation *(bonus, nếu làm)*: Nguyễn Minh Tuấn, Nguyễn Mạnh Hùng. Kế hoạch: Gửi bản prototype Streamlit cho 2 willing users sử dụng thử với kịch bản demo thực tế của họ. Phỏng vấn ngắn 15 phút về tính hữu ích của các gợi ý và ghi nhận điểm cần cải thiện UI.
+- Multi-prototype (nếu làm): 
+  - Trục khác biệt: Hiển thị lỗi trực tiếp trên văn bản (inline edit) vs Hiển thị danh sách lỗi ở sidebar (list review). 
+  - Lý do chọn: Chọn hiển thị danh sách lỗi vì người dùng có thể thấy rõ ràng từng lỗi và lời giải thích trước khi ra quyết định (áp dụng nguyên tắc G11).
 
 ## §9. Changelog
 | Thời điểm | Đổi gì | Vì sao (trỏ về feedback/case nào) |
+|---|---|---|
