@@ -81,9 +81,12 @@ Loại: [ ] Tối ưu tính năng có sẵn  [X] Tính năng mới
 
 ## §8. Phân công & kế hoạch
 - Phân công có tên: 
-  - Spec & Evidence: Đinh Đức Long
-  - Prompt & Evaluation: Bùi Việt Anh
-  - Code & UI (Streamlit): Võ Công Danh
+  - Spec & Evidence: Cả nhóm
+  - Survey & Backend: Đinh Đức Long
+  - Test-case & model & prompt: Bùi Việt Anh
+  - Fronend & Survey Question: Võ Công Danh
+  - Canvas & Slide & Test demo: Hà Anh Tuấn
+  - Code: Cả nhóm
   - Demo: Cả nhóm
 - Willing users (≥2 tên) + kế hoạch vòng validation *(bonus, nếu làm)*: Nguyễn Minh Tuấn, Trần Mạnh Hùng. Kế hoạch: Gửi bản prototype Streamlit cho 2 willing users sử dụng thử với kịch bản demo thực tế của họ. Phỏng vấn ngắn 15 phút về tính hữu ích của các gợi ý và ghi nhận điểm cần cải thiện UI.
 - Multi-prototype (nếu làm): 
