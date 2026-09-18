@@ -11,7 +11,7 @@
 | Bùi Việt Anh | 2A202602611 | Nhóm trưởng | Định hướng chọn track, slice. Tìm kiếm thông tin về các công việc hiện tại cần làm. Tạo các test-case cho CP3, chạy thử model với các test cases và phân tích log. |
 | Đinh Đức Long | 2A202602633 | Thành viên | Survey thu thập ý kiến từ users. Hỗ trợ chỉnh sửa UI. Tích hợp model vào UI, phân tích độ phủ của các test cases. |
 | Võ Công Danh | 2A202602739 | Thành viên | Nghiên cứu các câu hỏi để survey. Tạo và cải thiện UI app demo/final |
-| Hà Anh Tuấn | 2A202602376 | Thành viên | Survey thu thập ý kiến từ users, tạo Canvas. Test UI demo / final. |
+| Hà Anh Tuấn | 2A202602376 | Thành viên | Survey thu thập ý kiến từ users, tạo Canvas, slide-demo. Test UI demo / final. |
 
 > Nhóm copy nguyên file README này về repo của mình, rồi điền bảng trên. Cột **Phần việc đảm nhiệm** ghi càng cụ thể càng tốt.
 
